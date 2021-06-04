@@ -72,9 +72,11 @@ $products=Products::paginate(5);
      * @param  \App\Models\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function show(Products $products)
+    public function show($id)
     {
-        //
+        $product=Products::findOrFail($id);
+        $title="Product details Page";
+        return view('FrontProducts.singleDetails',compact('title','product'));
     }
 
     /**

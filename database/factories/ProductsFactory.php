@@ -26,7 +26,7 @@ class ProductsFactory extends Factory
         return [
             'pro_name'=>$this->faker->name(),
             'pro_price'=>$this->faker->numberBetween(1,200),
-            'pro_description'=>$this->faker->paragraph(50),
+            'pro_description'=>$this->faker->paragraph(10),
             'pro_image'=>$this->faker->randomElement(['/uploads/book1.png','/uploads/book2.png','/uploads/book3.png']),
         ];
     }

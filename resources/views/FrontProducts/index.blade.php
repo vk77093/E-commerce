@@ -23,7 +23,7 @@
             <div class="row mb30">
                 @forelse ($products as $item)
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="books-item">
+                   <a href="{{route('product.show', $item->id)}}"><div class="books-item">
                         <div class="books-item-thumb">
                             <img src="{{asset('assets/')}}{{$item->pro_image}}" alt="book">
                             <div class="new">New</div>
@@ -36,7 +36,7 @@
 
                             <div class="books-price">{{$item->pro_price}}</div>
                         </div>
-
+                    </a>
                         <a href="19_cart.html" class="btn btn-small btn--dark add">
                             <span class="text">Add to Cart</span>
                             <i class="seoicon-commerce"></i>
