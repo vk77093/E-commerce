@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 use App\Http\Controllers\ProductsController;
  Route::resource('product', ProductsController::class);
+ Route::get('/viewproduct',[ProductsController::class,'viewProducts']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

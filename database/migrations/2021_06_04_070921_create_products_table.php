@@ -12,7 +12,7 @@ class CreateProductsTable extends Migration
      *
      * @return void
      */
-    use SoftDeletes;
+    use softDeletes;
     protected $dates=['deleted_at'];
 
     public function up()
