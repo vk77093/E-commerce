@@ -57,9 +57,9 @@
                                 <td class="product-quantity">
 
                                     <div class="quantity">
-                                        <a href="#" class="quantity-minus">-</a>
+                                        <a href="{{route('cart.decrement',['id'=>$item->rowId,'qty'=>$item->qty])}}" class="quantity-minus">-</a>
                                         <input title="Qty" class="email input-text qty text" type="text" value={{$item->qty}} placeholder="1" readonly>
-                                        <a href="#" class="quantity-plus">+</a>
+                                        <a href="{{route('cart.increment',[$item->rowId,$item->qty])}}" class="quantity-plus">+</a>
                                     </div>
 
                                 </td>

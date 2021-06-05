@@ -22,6 +22,8 @@ use App\Http\Controllers\ProductsController;
  Route::post('/addtocart',[ProductsController::class,'addToCart'])->name('addtocart.store');
  Route::get('/cart',[ProductsController::class,'cartView'])->name('cart');
  Route::get('/cart/delete/{id}',[ProductsController::class,'cartDelete'])->name('cart.delete');
+ Route::get('/cart/decrement/{id}/{qty}',[ProductsController::class,'cartDecrement'])->name('cart.decrement');
+ Route::get('/cart/increment/{id}/{qty}',[ProductsController::class,'cartIncrement'])->name('cart.increment');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

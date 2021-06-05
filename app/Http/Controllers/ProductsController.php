@@ -174,4 +174,15 @@ return view('FrontProducts.cartView',compact('title'));
         Cart::remove($id);
         return redirect()->back();
     }
+    /**
+     * Updating the product qty through Update
+     */
+    public function cartIncrement($id,$qty){
+        Cart::update($id,$qty+1);
+        return redirect()->back();
+    }
+    public function cartDecrement($id,$qty){
+        Cart::update($id,$qty-1);
+        return redirect()->back();
+    }
 }
