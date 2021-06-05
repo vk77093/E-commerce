@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Products;
 use Illuminate\Http\Request;
+use Cart;
 
 
 class ProductsController extends Controller
@@ -142,5 +143,26 @@ $products=Products::paginate(5);
     public function viewProducts(){
         $products=Products::all();
         return view('FrontProducts.viewProduct',compact('products'));
+    }
+    public function addToCart(Request $request){
+        $productQty=Products::find($request->ptd_id);
+//$qtyGet=$request->all();
+// dd($qty,$product);
+$cart=Cart::add([
+    'id'=>$productQty->id,
+    'name'=>$productQty->pro_name,
+    'qty'=>$request->qty,
+    'price' =>$productQty->pro_price,
+]);
+//dd($cart);
+//dd(Cart::content());
+return redirect('/cart');
+    }
+    /**
+     * Get Function for getting the Cart Data
+     */
+    public function cartView(){
+$title="Cart Page";
+return view('FrontProducts.cartView',compact('title'));
     }
 }
