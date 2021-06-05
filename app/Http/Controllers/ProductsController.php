@@ -185,4 +185,15 @@ return view('FrontProducts.cartView',compact('title'));
         Cart::update($id,$qty-1);
         return redirect()->back();
     }
+    public function rapidAdd($id){
+        $product=Products::find($id);
+       $cart= Cart::add([
+'id'=>$product->id,
+'name'=>$product->pro_name,
+'qty'=>1,
+'price'=>$product->pro_price,
+        ]);
+        Cart::associate($cart->rowId, 'App\Models\Products');
+return redirect('/cart');
+    }
 }

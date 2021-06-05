@@ -43,15 +43,25 @@
 
                     <a href="#" class="js-cart-animate">
                         <i class="seoicon-basket"></i>
-                        <span class="cart-count">0</span>
+                        @if (Cart::count()<=0)
+                        <span class="cart-count">0</span>  
+                        @else
+                        <span class="cart-count">{{Cart::count()}}</span>  
+                        @endif
                     </a>
 
                     <div class="cart-popup-wrap">
                         <div class="popup-cart">
+                            @if (Cart::count() <= 0)
                             <h4 class="title-cart">No products in the cart!</h4>
-                            <p class="subtitle">Please make your choice.</p>
+                            <p class="subtitle">Please make your choice.</p>  
+                            @else
+                            <h4 class="title-cart">You Have Total {{Cart::count()}} Product</h4>
+                            <p class="subtitle">The Total Price For Product is {{Cart::total()}}</p> 
+                            @endif
+                          
                             <div class="btn btn-small btn--dark">
-                                <span class="text">view all catalog</span>
+                                <a href="{{route('cart')}}"><span class="text">view all catalog</span></a>
                             </div>
                         </div>
                     </div>
