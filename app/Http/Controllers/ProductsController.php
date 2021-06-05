@@ -185,6 +185,10 @@ return view('FrontProducts.cartView',compact('title'));
         Cart::update($id,$qty-1);
         return redirect()->back();
     }
+    /**
+     * Here we added the method for adding the
+     * product in cart through product page directly
+     */
     public function rapidAdd($id){
         $product=Products::find($id);
        $cart= Cart::add([
@@ -195,5 +199,12 @@ return view('FrontProducts.cartView',compact('title'));
         ]);
         Cart::associate($cart->rowId, 'App\Models\Products');
 return redirect('/cart');
+    }
+    /**
+     * method for creating the checkout page
+     */
+    public function checkOut(){
+        $title="Products-Checkout";
+        return view('FrontProducts.checkOut',compact('title'));
     }
 }
