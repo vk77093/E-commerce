@@ -12,7 +12,8 @@
         "laravel/breeze": "^1.2",
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
-        "olimortimer/laravelshoppingcart": "^5.0"
+        "olimortimer/laravelshoppingcart": "^5.0",
+        "stripe/stripe-php": "^7.82"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

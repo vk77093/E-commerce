@@ -78,7 +78,7 @@
 
 </div>
 <!-- Footer -->
-
+@yield('payment')
 <footer class="footer">
     <div class="sub-footer">
         <div class="container">

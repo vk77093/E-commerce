@@ -9,7 +9,7 @@
 				<div class="col-lg-12">
 			<div class="order">
 				<h2 class="h1 order-title text-center">Your Order</h2>
-				<form action="#" method="post" class="cart-main">
+				<form action="{{route('cart.checkout')}}" method="post" class="cart-main">
 					<table class="shop_table cart">
 						<thead class="cart-product-wrap-title-main">
 						<tr>
@@ -115,31 +115,44 @@
 								<img src="{{asset('assets/img/amex.png')}}" alt="Amex">
 							</a>
 							
-							<span style="float: right;">
-								<form action="/your-server-side-code" method="POST">
-									  <script
-									    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-									    data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
-									    data-amount="999"
-									    data-name="Stripe.com"
-									    data-description="Widget"
-									    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-									    data-locale="auto"
-									    data-zip-code="true">
-									  </script>
-								</form>
-							</span>
+							
 						</div>
 					</div>
 
 				</form>
+<!---- 
+                <span style="float: right;">
+                    <form action="{{route('cart.checkout')}}" method="POST">
+                        @csrf
+                       
+                          <script
+                            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                            {{-- src="https://js.stripe.com/v3/"class="stripe-button" --}}
+                            data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh" 
+                             {{-- data-key="pk_test_51Iz2elSHQwAB5KytudtHG4vI0cXTCr9EgXP2iak1leouI5OuJRPbR5ZTY9rCkn5c6y1bmr5zSaIM3OsaS8J4yI5D00key15dQF" --}}
+                            data-amount="{{Cart::total()}}"
+                            data-name="My Test SITE"
+                            data-description="Widget"
+                            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                            data-locale="auto"
+                            data-zip-code="true">
+                          </script>
+                    </form>
+                </span> --->
 			</div>
 		</div>
+
+
+    
+    
 
 			</div>
 		</div>
 	</div>
 </div>
-
+<!--added checkOutform --->
+@section('payment')
+    @include('includes.stripCheck')
+@endsection
 <!-- End Books products grid -->  
 @endsection

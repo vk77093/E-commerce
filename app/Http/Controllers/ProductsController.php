@@ -6,6 +6,8 @@ use App\Models\Products;
 use Illuminate\Http\Request;
 use Cart;
 
+use Strip\Charge;
+
 
 class ProductsController extends Controller
 {
@@ -206,5 +208,19 @@ return redirect('/cart');
     public function checkOut(){
         $title="Products-Checkout";
         return view('FrontProducts.checkOut',compact('title'));
+    }
+    public function cartCheckout(Request $request){
+    //    $data=$request->all();
+    //    dd($data);
+    
+    \Stripe\Stripe::setApiKey('sk_test_51Iz2elSHQwAB5Kytp5lUCdsXF8LqkPTAW9mzK2wlLruzmgysmzuYydVkvUv1kuYavFxfwQiqTeyynXYswa9dykMx00YXpEWV2l');
+    $charge=\Stripe\Charge::create([
+       
+'amount'=>Cart::total(),
+'currency'=>'usd',
+'description' =>'MY test Site Pucrhase',
+'source'=>$request->stripeToken,
+    ]);
+    dd('Your Card payments done');
     }
 }

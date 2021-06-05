@@ -26,6 +26,7 @@ use App\Http\Controllers\ProductsController;
  Route::get('/cart/increment/{id}/{qty}',[ProductsController::class,'cartIncrement'])->name('cart.increment');
  Route::get('/cart/rapidadd/{id}',[ProductsController::class,'rapidAdd'])->name('rapidadd');
  Route::get('/checkout',[ProductsController::class,'checkOut'])->name('checkout');
+ Route::post('/cart/checkout',[ProductsController::class,'cartCheckout'])->name('cart.checkout');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
