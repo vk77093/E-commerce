@@ -98,7 +98,7 @@ $products=Products::paginate(5);
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Products  $products
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response 
      */
     public function update(Request $request,$id)
     {
@@ -156,6 +156,10 @@ $cart=Cart::add([
 ]);
 //dd($cart);
 //dd(Cart::content());
+
+//for fixing The image issue we need to associate
+// our cart with model property
+Cart::associate($cart->rowId, 'App\Models\Products');
 return redirect('/cart');
     }
     /**
@@ -163,6 +167,11 @@ return redirect('/cart');
      */
     public function cartView(){
 $title="Cart Page";
+//Cart::destroy();
 return view('FrontProducts.cartView',compact('title'));
+    }
+    public function cartDelete($id){
+        Cart::remove($id);
+        return redirect()->back();
     }
 }

@@ -46,7 +46,7 @@
                     @csrf
                     <div class="quantity">
                         <a href="#" class="quantity-minus">-</a>
-                        <input title="Qty" class="email input-text qty text" name="qty" type="text" value="2">
+                        <input title="Qty" class="email input-text qty text" name="qty" type="text" value="1">
                         <a href="#" class="quantity-plus">+</a>
                     </div>
 <input type="hidden" name="ptd_id" value="{{$product->id}}">

@@ -21,6 +21,7 @@ use App\Http\Controllers\ProductsController;
  Route::get('/viewproduct',[ProductsController::class,'viewProducts']);
  Route::post('/addtocart',[ProductsController::class,'addToCart'])->name('addtocart.store');
  Route::get('/cart',[ProductsController::class,'cartView'])->name('cart');
+ Route::get('/cart/delete/{id}',[ProductsController::class,'cartDelete'])->name('cart.delete');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

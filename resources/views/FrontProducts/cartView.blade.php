@@ -31,7 +31,7 @@
                             <tr class="cart_item">
 
                                 <td class="product-remove">
-                                    <a href="#" class="product-del remove" title="Remove this item">
+                                    <a href="{{route('cart.delete', $item->rowId)}}" class="product-del remove" title="Remove this item">
                                         <i class="seoicon-delete-bold"></i>
                                     </a>
                                 </td>
@@ -40,7 +40,8 @@
 
                                     <div class="cart-product__item">
                                         <a href="#">
-                                            <img src="{{asset($item->image)}}" alt="product" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image">
+                                            <!--By Using Associated Methods -->
+                                            <img src="{{asset('assets/')}}{{$item->model->pro_image}}" alt="product" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image">
                                         </a>
                                         <div class="cart-product-content">
                                             {{-- <p class="cart-author">Callum Bailey</p> --}}
@@ -64,6 +65,9 @@
                                 </td>
 
                                 <td class="product-subtotal">
+                                    <!---here They providing the total with default tax
+                                        if we want own taxes then we need to publish packages
+                                        https://github.com/olimortimer/LaravelShoppingcart -->
                                     <h5 class="total amount">{{$item->total}}</h5>
                                 </td>
 
