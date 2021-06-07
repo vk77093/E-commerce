@@ -120,7 +120,7 @@
 					</div>
 
 				</form>
-<!---- 
+ 
                 <span style="float: right;">
                     <form action="{{route('cart.checkout')}}" method="POST">
                         @csrf
@@ -138,7 +138,7 @@
                             data-zip-code="true">
                           </script>
                     </form>
-                </span> --->
+                </span> 
 			</div>
 		</div>
 
@@ -151,8 +151,8 @@
 	</div>
 </div>
 <!--added checkOutform --->
-@section('payment')
+{{-- @section('payment')
     @include('includes.stripCheck')
-@endsection
+@endsection --}}
 <!-- End Books products grid -->  
 @endsection

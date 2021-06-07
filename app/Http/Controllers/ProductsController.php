@@ -140,7 +140,7 @@ $products=Products::paginate(5);
             unlink($product->pro_image);
         }
         $product->delete();
-        redirect('/product.create')->with(['message'=>'Product deleted Suceesfully']);
+        redirect('/product.create')->with(['error'=>'Product deleted Suceesfully']);
     }
     public function viewProducts(){
         $products=Products::all();
@@ -162,7 +162,7 @@ $cart=Cart::add([
 //for fixing The image issue we need to associate
 // our cart with model property
 Cart::associate($cart->rowId, 'App\Models\Products');
-return redirect('/cart');
+return redirect('/cart')->with('message','Product got added in cart');
     }
     /**
      * Get Function for getting the Cart Data
@@ -181,11 +181,11 @@ return view('FrontProducts.cartView',compact('title'));
      */
     public function cartIncrement($id,$qty){
         Cart::update($id,$qty+1);
-        return redirect()->back();
+        return redirect()->back()->with('info','One Product in added in cart');
     }
     public function cartDecrement($id,$qty){
         Cart::update($id,$qty-1);
-        return redirect()->back();
+        return redirect()->back()->with('info','One Product is deleted from cart');
     }
     /**
      * Here we added the method for adding the
@@ -200,7 +200,7 @@ return view('FrontProducts.cartView',compact('title'));
 'price'=>$product->pro_price,
         ]);
         Cart::associate($cart->rowId, 'App\Models\Products');
-return redirect('/cart');
+return redirect('/cart')->with('info', 'Product added in cart');
     }
     /**
      * method for creating the checkout page
@@ -214,6 +214,7 @@ return redirect('/cart');
     //    dd($data);
     
     \Stripe\Stripe::setApiKey('sk_test_51Iz2elSHQwAB5Kytp5lUCdsXF8LqkPTAW9mzK2wlLruzmgysmzuYydVkvUv1kuYavFxfwQiqTeyynXYswa9dykMx00YXpEWV2l');
+   
     $charge=\Stripe\Charge::create([
        
 'amount'=>Cart::total(),
